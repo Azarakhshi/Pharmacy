@@ -12,6 +12,15 @@ public class Prescriptions {
     private boolean isConfirm;
     private boolean doesExist;
     private final int TOTAL_PRICE = quantity * price;
+    private int prescriptionsIdOrder;
+
+    public int getPrescriptionsIdOrder() {
+        return prescriptionsIdOrder;
+    }
+
+    public void setPrescriptionsIdOrder(int prescriptionsIdOrder) {
+        this.prescriptionsIdOrder = prescriptionsIdOrder;
+    }
 
     public int getPrescriptionsId() {
         return PrescriptionsId;
@@ -78,29 +87,30 @@ public class Prescriptions {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Prescriptions that = (Prescriptions) o;
-        return PrescriptionsId == that.PrescriptionsId && quantity == that.quantity && price == that.price &&
-                isConfirm == that.isConfirm && doesExist == that.doesExist && TOTAL_PRICE == that.TOTAL_PRICE &&
+        return PrescriptionsId == that.PrescriptionsId && quantity == that.quantity &&
+                price == that.price && isConfirm == that.isConfirm && doesExist == that.doesExist &&
+                TOTAL_PRICE == that.TOTAL_PRICE && prescriptionsIdOrder == that.prescriptionsIdOrder &&
                 Objects.equals(patientsName, that.patientsName) && Objects.equals(drugsName, that.drugsName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(PrescriptionsId, patientsName, drugsName,
-                quantity, price, isConfirm, doesExist, TOTAL_PRICE);
+        return Objects.hash(PrescriptionsId, patientsName, drugsName, quantity,
+                price, isConfirm, doesExist, TOTAL_PRICE, prescriptionsIdOrder);
     }
 
     @Override
     public String toString() {
         return "Prescriptions{ " +
                 "PrescriptionsId= " + PrescriptionsId +
-                ", patientsName=' " + patientsName + '\'' +
-                ", drugsName=' " + drugsName + '\'' +
+                ", patientsName= '" + patientsName + '\'' +
+                ", drugsName= '" + drugsName + '\'' +
                 ", quantity= " + quantity +
                 ", price= " + price +
                 ", isConfirm= " + isConfirm +
                 ", doesExist= " + doesExist +
                 ", TOTAL_PRICE= " + TOTAL_PRICE +
+                ", prescriptionsIdOrder= " + prescriptionsIdOrder +
                 " }";
     }
-
 }
