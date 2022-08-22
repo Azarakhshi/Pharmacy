@@ -16,7 +16,7 @@ public class AdminServiceImpl implements AdminService{
 
     private boolean adminNameContains(String adminName) throws SQLException {
         pharmacyAdmin.setAdminName(adminName);
-        return adminRepository.adminContains(pharmacyAdmin);
+        return adminRepository.adminNameContains(pharmacyAdmin);
     }
     @Override
     public void signUp(String adminName, String adminPassword) throws SQLException {

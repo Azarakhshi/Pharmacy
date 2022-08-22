@@ -11,7 +11,7 @@ public class AdminRepositryImpl implements AdminRepository {
 
     @Override
     public void save(PharmacyAdmin pharmacyAdmin) throws SQLException {
-        String sql = " INSERT INTO patient(patientname , patientpassword) VALUES (?,?)";
+        String sql = " INSERT INTO pharmacyadmin(adminname , adminpassword) VALUES (?,?)";
         PreparedStatement ps = ApplicationConnection.getConnection().prepareStatement(sql);
         ps.setString(1, pharmacyAdmin.getAdminName());
         ps.setString(2, pharmacyAdmin.getAdminPassword());
@@ -21,7 +21,7 @@ public class AdminRepositryImpl implements AdminRepository {
 
     @Override
     public boolean adminNameContains(PharmacyAdmin pharmacyAdmin) throws SQLException {
-        String sql = "SELECT patientname from patient WHERE patientname = ? ";
+        String sql = "SELECT adminname from pharmacyadmin WHERE adminname = ? ";
         PreparedStatement ps = ApplicationConnection.getConnection().prepareStatement(sql);
         ps.setString(1, pharmacyAdmin.getAdminName());
         ResultSet rs = ps.executeQuery();
@@ -30,7 +30,7 @@ public class AdminRepositryImpl implements AdminRepository {
 
     @Override
     public boolean adminContains(PharmacyAdmin pharmacyAdmin) throws SQLException {
-        String sql = "SELECT * from patient WHERE patientname = ? and patientpassword = ? ";
+        String sql = "SELECT * from pharmacyadmin WHERE adminname = ? and adminpassword = ? ";
         PreparedStatement ps = ApplicationConnection.getConnection().prepareStatement(sql);
         ps.setString(1, pharmacyAdmin.getAdminName());
         ps.setString(2, pharmacyAdmin.getAdminPassword());
