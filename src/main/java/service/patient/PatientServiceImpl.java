@@ -2,6 +2,7 @@ package service.patient;
 
 import entity.Patient;
 import repository.patient.PatientRepository;
+import view.useroption.patientoption.PatientOption;
 
 import java.sql.SQLException;
 
@@ -14,7 +15,7 @@ public class PatientServiceImpl implements PatientService {
     }
 
     Patient patient = new Patient();
-
+    PatientOption patientOption = new PatientOption();
 
     private boolean patientNameContains(String patientName) throws SQLException {
         patient.setPatientName(patientName);
@@ -31,7 +32,7 @@ public class PatientServiceImpl implements PatientService {
             patient.setPatientPassword(patientPassword);
             patientRepository.save(patient);
             System.out.println("sign up is successfully. ");
-            //show patient menu
+            patientOption.patientOptions();
         }
     }
 
@@ -40,7 +41,7 @@ public class PatientServiceImpl implements PatientService {
         patient.setPatientName(patientName);
         patient.setPatientPassword(patientPassword);
         if (patientRepository.patientContains(patient)) {
-            //show patient menu
+            patientOption.patientOptions();
         }else{
             System.out.println("your account is not exist. ");
         }
