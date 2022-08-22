@@ -31,6 +31,7 @@ public class PatientServiceImpl implements PatientService {
             patient.setPatientPassword(patientPassword);
             patientRepository.save(patient);
             System.out.println("sign up is successfully. ");
+            //show patient menu
         }
     }
 

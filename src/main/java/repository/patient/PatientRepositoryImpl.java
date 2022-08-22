@@ -6,8 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class PatientRepositoryImpl {
+public class PatientRepositoryImpl implements PatientRepository {
 
+    @Override
     public void save(Patient patient) throws SQLException {
         String sql = " INSERT INTO patient(patientname , patientpassword) VALUES (?,?)";
         PreparedStatement ps = ApplicationConnection.getConnection().prepareStatement(sql);
@@ -17,6 +18,7 @@ public class PatientRepositoryImpl {
         ps.close();
     }
 
+    @Override
     public boolean patientNameContains(Patient patient) throws SQLException {
         String sql = "SELECT patientname from patient WHERE patientname = ? ";
         PreparedStatement ps = ApplicationConnection.getConnection().prepareStatement(sql);
@@ -25,6 +27,7 @@ public class PatientRepositoryImpl {
         return rs.next();
     }
 
+    @Override
     public boolean patientContains(Patient patient) throws SQLException {
         String sql = "SELECT * from patient WHERE patientname = ? and patientpassword = ? ";
         PreparedStatement ps = ApplicationConnection.getConnection().prepareStatement(sql);
