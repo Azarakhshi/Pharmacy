@@ -2,6 +2,7 @@ package service.admin;
 
 import entity.PharmacyAdmin;
 import repository.admin.AdminRepository;
+import view.useroption.adminoption.AdminOption;
 
 import java.sql.SQLException;
 
@@ -14,10 +15,11 @@ public class AdminServiceImpl implements AdminService{
 
     PharmacyAdmin pharmacyAdmin = new PharmacyAdmin();
 
-    private boolean adminNameContains(String adminName) throws SQLException {
+    public boolean adminNameContains(String adminName) throws SQLException {
         pharmacyAdmin.setAdminName(adminName);
         return adminRepository.adminNameContains(pharmacyAdmin);
     }
+    AdminOption adminOption = new AdminOption();
     @Override
     public void signUp(String adminName, String adminPassword) throws SQLException {
         if (adminNameContains(adminName)) {
@@ -28,7 +30,7 @@ public class AdminServiceImpl implements AdminService{
             pharmacyAdmin.setAdminPassword(adminPassword);
             adminRepository.save(pharmacyAdmin);
             System.out.println("sign up is successfully. ");
-            //show patient menu
+            adminOption.adminOptions();
         }
     }
 
@@ -37,7 +39,7 @@ public class AdminServiceImpl implements AdminService{
         pharmacyAdmin.setAdminName(adminName);
         pharmacyAdmin.setAdminPassword(adminPassword);
         if (adminRepository.adminNameContains(pharmacyAdmin)) {
-            //show patient menu
+            adminOption.adminOptions();
         }else{
             System.out.println("your account is not exist. ");
         }
