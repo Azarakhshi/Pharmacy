@@ -11,7 +11,12 @@ public class Prescriptions {
     private int price;
     private boolean isConfirm;
     private boolean doesExist;
-    private final int TOTAL_PRICE = quantity * price;
+    private int TOTAL_PRICE;
+
+    public void setTOTAL_PRICE(int TOTAL_PRICE) {
+        this.TOTAL_PRICE = TOTAL_PRICE;
+    }
+
     private int prescriptionsIdOrder;
 
     public int getPrescriptionsIdOrder() {
