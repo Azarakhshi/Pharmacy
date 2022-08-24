@@ -17,7 +17,7 @@ public class PatientServiceImpl implements PatientService {
     Patient patient = new Patient();
     PatientOption patientOption = new PatientOption();
 
-    private boolean patientNameContains(String patientName) throws SQLException {
+    public boolean patientNameContains(String patientName) throws SQLException {
         patient.setPatientName(patientName);
         return patientRepository.patientNameContains(patient);
     }
@@ -32,7 +32,7 @@ public class PatientServiceImpl implements PatientService {
             patient.setPatientPassword(patientPassword);
             patientRepository.save(patient);
             System.out.println("sign up is successfully. ");
-            patientOption.patientOptions();
+            patientOption.patientOptions(patient.getPatientName());
         }
     }
 
@@ -41,7 +41,7 @@ public class PatientServiceImpl implements PatientService {
         patient.setPatientName(patientName);
         patient.setPatientPassword(patientPassword);
         if (patientRepository.patientContains(patient)) {
-            patientOption.patientOptions();
+            patientOption.patientOptions(patient.getPatientName());
         }else{
             System.out.println("your account is not exist. ");
         }
